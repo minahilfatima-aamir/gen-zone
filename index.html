@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GEN-ZONE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="header-row">
+    <div class="header-logo">GEN-ZONE</div>
+
+    <form class="search-form" action="/search" method="GET">
+      <input type="text" id="searchInput" name="q" class="search-input" placeholder="FIND YOUR FAVOURITES"
+             onfocus="showSuggestions()" onblur="hideSuggestionsDelayed()">
+      <i class="fas fa-search"></i>
+
+      <div class="suggestions-box" id="suggestionsBox">
+          <div class="suggestions-columns">
+            <!-- Left Column -->
+           <div class="suggestion-column">
+        <div class="suggestion-category">SUGGESTIONS FOR YOU</div>
+        <ul>
+          <li><i class="fas fa-search icon"></i> New-in</li>
+          <li><i class="fas fa-search icon"></i> Gadgets</li>
+          <li><i class="fas fa-search icon"></i> Technologies</li>
+          <li><i class="fas fa-search icon"></i> Clothing</li>
+          <li><i class="fas fa-search icon"></i> Make-up</li>
+          <li><i class="fas fa-search icon"></i> Shoes</li>
+        </ul>
+           </div>
+        <!-- Right Column -->
+           <div class="suggestion-column">
+            <div class="suggestion-category">PRODUCTS</div>
+            <div class="product-hint"></div>
+          </div>
+         </div>
+     </div>
+    </form>
+
+    <div class="header-icons">
+      <i class="fas fa-truck-fast"></i>
+      <i class="fas fa-user"></i>
+      <div class="cart-icon">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const suggestionsBox = document.getElementById("suggestionsBox");
+    let blurTimeout;
+
+    function showSuggestions() {
+      clearTimeout(blurTimeout);
+      suggestionsBox.style.display = "block";
+    }
+
+    function hideSuggestionsDelayed() {
+      blurTimeout = setTimeout(() => {
+        suggestionsBox.style.display = "none";
+      }, 200);
+    }
+
+    <!-- comment msG:When i click on cart headings to open new page -->
+
+    const heading=document.querySelectorAll('.heading');
+    heading.forEach(heading=> {heading.addEventListener('click' ,function(){
+      const link=heading.getAttribute('data-link');
+      window.open(link, '_blank');
+     });
+    });
+    
+  </script>
+  
+  <!-- Introducing Categories-->
+
+    <!-- Category1 -->
+   <div class="image-section">
+    <div class="cart-items">
+        <img src="download.jpg" alt="no image found">
+        <h3 class="heading" data-link="shoes.html">SHOES</h3>
+    </div>
+
+     <!-- Category2-->
+    <div class="cart-items">
+        <img src="hoverboard.png" alt="no image found">
+        <h3 class="heading" data-link="technologies.html">....</h3> 
+    </div>
+
+    <!-- Category3 -->
+    <div class="cart-items">
+        <img src="makeup.jpeg">
+        <h3 class="heading" data-link="makeup.html">MAKE-UP</h3>
+    </div>
+
+    <!-- Category4 -->
+    <div class="cart-items">
+         <img src="gadgets.jpeg">
+         <h3 class="heading" data-link="gadgets.html">GADGETS</h3>
+    </div>
+
+    <!-- Category5 -->
+    <div class="cart-items">
+      <img src="Clothing.png">
+      <h3 class="heading" data-link="clothing.html">CLOTHING</h3>
+    </div>
+   </div>
+
+  <div class="section-divider">
+   <span>Top Picks</span>
+  </div>
+
+  <script>
+   document.querySelectorAll('.cart-items').forEach(item => {
+    const img = item.querySelector('img');
+    const heading = item.querySelector('.heading');
+
+    if (img && heading) {
+        const link = heading.dataset.link;
+
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            if (link) {
+                window.location.href = link;
+            }
+        });
+      }
+    });
+  </script>
+
+ <div class="product-marquee">
+  <div class="product-track" id="product-track">
+    
+    <!-- Product 1 -->
+    <a href="product1.html" class="product-card">
+      <img src="fitme.jpg" alt="Shoe">
+      <p class="name">Maybelline - Fit Me Fresh Tint Spf 50 + Vitamin C Foundation - 06</p>
+      <p class="brand">Maybelline</p>
+      <p class="price">Rs2,499</p>
+    </a>
+
+    <!-- Product 2 -->
+    <a href="nike_airmax.html" class="product-card">
+      <img src="airmax.jpg" alt="Makeup">
+      <p class="name">Nike Air Max Uptempo '95</p>
+      <p class="brand">Men's Shoe</p>
+      <p class="price">$24.99</p>
+    </a>
+
+    <!-- Product 3 -->
+    <a href="apple_watch.html" class="product-card">
+      <img src="apple_watch.jpg" alt="Watch">
+      <p class="name">Apple Watch Series 9 41mm</p>
+      <p class="price">Rs93,999</p>
+    </a>
+
+    <!-- Duplicate for seamless scrolling -->
+    <a href="nike_hoodie.html" class="product-card">
+      <img src="hoodie.jpg" alt="Shoe">
+      <p class="name">Nike SB</p>
+      <p class="brand">Big Kids' Fleece Skate Hoodie</p>
+      <p class="price">Rs1,799</p>
+    </a>
+
+    <!-- Duplicate for seamless scrolling -->
+    <a href="maybelline_mascara.html" class="product-card">
+      <img src="mascara.jpg" alt="Shoe">
+      <p class="name">Maybelline Lash Sensational Sky High Mascara</p>
+      <p class="brand">Maybelline</p>
+      <p class="price">Rs1,799</p>
+    </a>
+
+        <!-- Duplicate for seamless scrolling -->
+    <a href="air_jordan.html" class="product-card">
+      <img src="W-air.jpg" alt="Shoe">
+      <p class="name">Air Jordan 1 Brooklyn Low</p>
+      <p class="brand">Women's Shoe</p>
+      <p class="price">Rs1,799</p>
+    </a>
+
+        <!-- Duplicate for seamless scrolling -->
+    <a href="glow_cream.html" class="product-card">
+      <img src="st_london.jpg" alt="Shoe">
+      <p class="name">ST London - Wonder Glow Cream - 50 ML</p>
+      <p class="brand">ST London</p>
+      <p class="price">Rs3,960</p>
+    </a>
+
+        <!-- Duplicate for seamless scrolling -->
+    <a href="aipods_pro.html" class="product-card">
+      <img src="R.png" alt="Shoe">
+      <p class="name">Airpods Pro</p>
+      <p class="brand">Apple</p>
+      <p class="price">Rs4,200</p>
+    </a>
+
+        <!-- Duplicate for seamless scrolling -->
+    <a href="skateboard.html" class="product-card">
+      <img src="skateboard.jpg" alt="Shoe">
+      <p class="name">Waterproof Electic skateboard</p>
+      <p class="price">Rs29,999</p>
+    </a>
+
+        <!-- Duplicate for seamless scrolling -->
+    <a href="product10.html" class="product-card">
+      <img src="shirt.jpg" alt="Shoe">
+      <p class="name">SHORT SLEEVE BLAZER WITH LINEN</p>
+      <p class="brand">ZARA</p>
+      <p class="price">Rs18,000</p>
+    </a>
+
+  </div>
+ </div>
+
+ <script>
+  const track = document.getElementById("product-track");
+
+  // Step 1: Cloning all cards once
+  const cards = Array.from(track.children);
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    track.appendChild(clone);
+  });
+
+  // Step 2: Animate scroll
+  let scrollPos = 0;
+  const speed = 0.5; 
+
+  function loopScroll() {
+    scrollPos += speed;
+    
+    // When we've scrolled through the first set, reset
+    if (scrollPos >= track.scrollWidth / 2) {
+      scrollPos = 0;
+    }
+
+    track.style.transform = `translateX(-${scrollPos}px)`;
+    requestAnimationFrame(loopScroll);
+  }
+
+  loopScroll();
+ </script>
+
+ <hr class="transparent-hr">
+
+ <div class="wrapper">
+   <div class="left-content">
+    <div class="items-grid">
+     <div class="item-card clickable-card" data-link="product1.html">
+      <img src="images/BLUETTOTH1.png" alt="Product 1" />
+      <p class="item-name">Product 1</p>
+      <p class="item-price">$49.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product2.html">
+      <img src="images/BLUETOOTH2.png" alt="Product 2" />
+      <p class="item-name">Product 2</p>
+      <p class="item-price">$59.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product3.html">
+      <img src="images/BLUETOOTH3.png" alt="Product 3" />
+      <p class="item-name">Product 3</p>
+      <p class="item-price">$39.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product4.html">
+      <img src="images/BLUETOOTH4.png" alt="Product 4" />
+      <p class="item-name">Product 4</p>
+      <p class="item-price">$29.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product5.html">
+      <img src="images/BLUETOOTH5.png" alt="Product 5" />
+      <p class="item-name">Product 5</p>
+      <p class="item-price">$19.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product6.html">
+      <img src="images/BLUETOOTH6.png" alt="Product 6" />
+      <p class="item-name">Product 6</p>
+      <p class="item-price">$24.99</p>
+     </div>
+    </div>
+   </div>
+
+   <div class="right-bg">
+    <img src="images/1.png" alt="Pic 1" class="pic1 clickable-card" data-link="clothing.html" />
+    <img src="images/PRODUCT.png" alt="Pic 2" class="pic2 clickable-card" data-link="clothing.html" />
+  
+   <!-- Text below or above images -->
+    <div class="text-content" >
+      <h1 style="font-size: 1.5rem; font-family:'Times New Roman', Times, serif; color:rgb(0, 0, 0); margin-right:2px">Wireless Lifestyle</h1>
+      <h2 style="font-size: 30px; color:rgb(2, 2, 88)">GADGETS</h2>
+    </div>
+   </div>
+ </div> 
+
+ <hr class="transparent-hr">
+
+  <div class="wrapper">
+    <div class="again-bg">
+     <img src="images/shoepic2.png" alt="Pic 1" class="again-pic1 clickable-card" style="border: 2px solid rgb(40, 43, 107);" data-link="footwear.html" />
+     <img src="images/shoepic1.png" alt="Pic 2" class="again-pic2 clickable-card" data-link="footwear.html" />
+     <div class="vertical-text">FOOTWEAR</div>
+    </div>
+
+    <div class="again-content">
+      <div class="again-grid">
+       <div class="item-card clickable-card" data-link="product1.html">
+        <img src="images/shoe1.png" alt="Product 1" />
+        <p class="item-name">Product 1</p>
+        <p class="item-price">$49.99</p>
+       </div>
+       <div class="item-card clickable-card" data-link="product2.html">
+        <img src="images/shoe2.png" alt="Product 2" />
+        <p class="item-name">Product 2</p>
+        <p class="item-price">$59.99</p>
+       </div>
+       <div class="item-card clickable-card" data-link="product3.html">
+        <img src="images/shoe3.png" alt="Product 3" />
+        <p class="item-name">Product 3</p>
+        <p class="item-price">$39.99</p>
+       </div>
+       <div class="item-card clickable-card" data-link="product4.html">
+        <img src="images/shoe4.png" alt="Product 4" />
+        <p class="item-name">Product 4</p>
+        <p class="item-price">$29.99</p>
+       </div>
+       <div class="item-card clickable-card" data-link="product5.html">
+        <img src="images/shoe5.jpg" alt="Product 5" />
+        <p class="item-name">Product 5</p>
+        <p class="item-price">$19.99</p>
+       </div>
+       <div class="item-card clickable-card" data-link="product6.html">
+        <img src="images/shoe6.jpg" alt="Product 6" />
+        <p class="item-name">Product 6</p>
+        <p class="item-price">$24.99</p>
+       </div>
+      </div>
+     </div>
+    </div>
+
+
+ <hr class="transparent-hr">
+
+ <div class="wrapper">
+   <div class="left-content">
+    <div class="items-grid">
+     <div class="item-card clickable-card" data-link="product1.html">
+      <img src="images/product1.png" alt="Product 1" />
+      <p class="item-name">Product 1</p>
+      <p class="item-price">$49.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product2.html">
+      <img src="images/product2.jpg" alt="Product 2" />
+      <p class="item-name">Product 2</p>
+      <p class="item-price">$59.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product3.html">
+      <img src="images/product3.jpg" alt="Product 3" />
+      <p class="item-name">Product 3</p>
+      <p class="item-price">$39.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product4.html">
+      <img src="images/product4.png" alt="Product 4" />
+      <p class="item-name">Product 4</p>
+      <p class="item-price">$29.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product5.html">
+      <img src="images/product5.png" alt="Product 5" />
+      <p class="item-name">Product 5</p>
+      <p class="item-price">$19.99</p>
+     </div>
+     <div class="item-card clickable-card" data-link="product6.html">
+      <img src="images/product6.png" alt="Product 6" />
+      <p class="item-name">Product 6</p>
+      <p class="item-price">$24.99</p>
+     </div>
+    </div>
+   </div>
+
+   <div class="third-bg">
+    <img src="images/left1.jpg" style="border: 2px solid #964d71;" alt="Pic 1" class="pic1 clickable-card" data-link="clothing.html" />
+    <img src="images/left2.png" alt="Pic 2" class="pic2 clickable-card" data-link="clothing.html" />
+  
+   <!-- Text below or above images -->
+    <div class="text-content" >
+      <h1>Style</h1>
+      <h2>YOUR WARDROBE</h2>
+    </div>
+   </div>
+ </div> 
+ <hr class="transparent-hr">
+
+
+
+  <script>
+   document.querySelectorAll('.clickable-card').forEach(element => {
+    element.addEventListener('click', () => {
+     const url = element.getAttribute('data-link');
+     window.location.href = url;
+    });
+   });
+ </script>
+ <footer>
+  <div class="footer-container">
+    <p>&copy; 2025 GEN-ZONE. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+ </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</body>
+</html>
